@@ -1,12 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Store</title>
-</head>
-<body>
-    <!--<script src="./index.js"></script>-->
-    <script src="./products.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tienda Virtual</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css..." />
+    <link rel="stylesheet" href="styles/styles.css">
+  </head>
+  <body>
+    <header>
+      <div class="search">
+        <div class="logo">
+          <a class="logo" href="index.html"><img src="assets/tiendamia-logo.svg" width="218" alt="Logo store"/></a>
+        </div>
+        <div class="form">
+          <form>
+            <input type="text" placeholder="Search">
+          </form>
+        </div>
+        <div class="social">
+          <ul>
+            <li><img src="assets/facebook.png" alt="icono-facebook"></li>
+            <li><img src="assets/instagram.png" alt="icono-instagram"></li>
+          </ul>
+        </div>
+      </div>  
+      <div class="nav" id="nav">
+      
+      </div>    
+    </header>
+    <section id="hero">
+      <div class="container">
+        <div class="title-container">
+          <span>tecnologia</span>
+          <span>renovada</span>
+        </div>
+      </div>
+    </section>
+    <main>
+      <div class="container">
+        <div class="product-container" id="products">
+            
+        </div>
+      </div>
+    </main>
+    <footer>
+      <div class="container">
+        <div class="columns-container" id="fotter">
+        </div>
+        <div class="copyright">Curso de HTML + CSS 2024</div>
+      </div>
+    </footer>  
+    <script src="./scripts/layout.js"></script>    
+    <!-- <script src="./scripts/products.js"></script> -->
+    <script src="./scripts/productCards.js"></script>
+  </body>
 </html>
