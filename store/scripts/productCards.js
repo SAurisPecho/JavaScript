@@ -32,14 +32,6 @@ const prod8 = new Product("./assets/mock1.jpg", "8", "AirPods Pro", "Space Gray"
 //Array de los productos creados en instancias
 const productsArray = [prod1, prod2, prod3, prod4, prod5, prod6, prod7, prod8];
 
-
-// const productsSelector = document.getElementById("products");
-// let productsTemplate = ""; //Reemplaza contenido de la variable productsTemplate con una iteración for of 
-// for (let element of productsArray) { //Por cada elemento del array products 
-//     productsTemplate = productsTemplate + createCard(element) // el products templtes se le agrega cada create card de cada element del array
-// }
-// productsSelector.innerHTML = productsTemplate; //Imprime el contenido en el selector
-
 //DE FORMA DINAMICA
 function createCard (product) {
     return `
