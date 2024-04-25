@@ -107,3 +107,6 @@ const products = [prod1, prod2, prod3, prod4, prod5, prod6];
 // //agregar a cada instancia prodNumberImgs
 // console.log(products);
 // console.log(prod1.imgs);
+
+
+//PARA PRACTICAR.....
