@@ -1,36 +1,15 @@
-// const producto1 = {
-//     nombre: "celular",
-//     precio: 100000,
-//     stock: 2,
-// };
-
-// console.log(producto1);
-
-// producto1.id = "id123";
-// producto1["foto"] = "https://i.postimg.cc/Jn2C5W84/galaxy1.webp";
-
-// console.log(producto1);
-// console.log(producto1.nombre);
-
 class Product {
-    constructor (id, title, price, stock, images,onsale, supplier, discount, description,imgs) {
+    constructor (image, id, title, description, price, discount, policytax, stock, imgs, colors) {
+        this.image = image;
         this.id = id;
         this.title = title;
-        this.price = price;
-        this.stock = stock;
-        this.images = images;
-        this.onsale = onsale;
-        this._supplier = supplier;
-        this.discount = discount;
         this.description = description;
+        this.price = price;
+        this.discount = discount;
+        this.policytax = policytax;
+        this.stock = stock;
         this.imgs = imgs;
-    }
-    //metodos getter y setter del atributo privado
-    get getsupplier () {
-        return this._supplier;
-    }
-    set setsupplier (newSupplier) {
-        this._supplier = newSupplier;
+        this.colors = colors;
     }
     sellUnits (units) {
         if (units> this.stock){
@@ -40,73 +19,32 @@ class Product {
             this.stock = this.stock - units
     }
 }
-//define los arrays de imágenes de cada producto creado, esto fue cambiado a este lugar para que pueda ser usado por las instancias
-const prod1Imgs = ["https://upload.wikimedia.org/wikipedia/commons/7/7c/Samsung_Galaxy_Note_7.png", "https://example.com/image2.jpg","https://example.com/image3.jpg"];
-const prod2Imgs = ["https://tiendasishop.com/media/catalog/product/m/h/mhdj3lz_a.jpg?optimize=high&bg-color=255,255,255&fit=bounds&height=700&width=700&canvas=700:700","https://example.com/image2.jpg", "https://example.com/image3.jpg"];
-const prod3Imgs = ["https://nextlevel.com.bo/cdn/shop/products/nstore_1500x.png?v=1685021675","https://example.com/image2.jpg"];
-const prod4Imgs = ["https://i.postimg.cc/Jn2C5W84/galaxy1.webp", "https://example.com/image2.jpg"];
-const prod5Imgs = ["https://i.postimg.cc/Jn2C5W84/galaxy1.webp", "https://example.com/image2.jpg"];
-const prod6Imgs = ["https://i.postimg.cc/Jn2C5W84/galaxy1.webp", "https://example.com/image2.jpg"];
 
-const prod1 = new Product("001121ab", "celular", 999, 14, "https://upload.wikimedia.org/wikipedia/commons/7/7c/Samsung_Galaxy_Note_7.png", true, "gold", "50%", "Space Gray", prod1Imgs);
-const prod2 = new Product("001122abc", "celular1", 1001, 18, "https://tiendasishop.com/media/catalog/product/m/h/mhdj3lz_a.jpg?optimize=high&bg-color=255,255,255&fit=bounds&height=700&width=700&canvas=700:700", true, "black", "70%", "Space Gray", prod2Imgs);
-const prod3 = new Product("0011223abcd", "celular2", 1000, 10, "https://nextlevel.com.bo/cdn/shop/products/nstore_1500x.png?v=1685021675", true, "black", "20%", "Space Gray", prod3Imgs);
-const prod4 = new Product("11223344efgh", "celular3", 2000, 16, "https://i.postimg.cc/Jn2C5W84/galaxy1.webp", true, "gold", "0%", "Space Gray", prod4Imgs);
-const prod5 = new Product("012345ap5", "telefono", 1500, 12, "https://falabella.scene7.com/is/image/FalabellaPE/gsc_120506985_2697250_1?wid=800&hei=800&qlt=70", true, "black", "10%", "Space Gray", prod5Imgs);
-const prod6 = new Product("012345apb6", "telefono", 1500, 12, "https://falabella.scene7.com/is/image/FalabellaPE/gsc_120506985_2697250_1?wid=800&hei=800&qlt=70", true, "black", "25%", "Space Gray", prod6Imgs);
+//Arrays de imágenes de cada producto
+const prodImgs1 = ["https://img.freepik.com/fotos-premium/smartphone-purpura-pantalla-blanco-pantalla-tactil-moderna-aislada-espacio-blanco_158502-95.jpg?size=626&ext=jpg", "https://img.freepik.com/fotos-premium/smartphone-purpura-pantalla-blanco-pantalla-tactil-moderna-aislada-espacio-blanco_158502-95.jpg?size=626&ext=jpg"];
+const prodImgs2 = ["https://img.freepik.com/fotos-premium/smartphone-purpura-pantalla-blanco-pantalla-tactil-moderna-aislada-espacio-blanco_158502-95.jpg?size=626&ext=jpg", "https://img.freepik.com/fotos-premium/smartphone-purpura-pantalla-blanco-pantalla-tactil-moderna-aislada-espacio-blanco_158502-95.jpg?size=626&ext=jpg"];
+const prodImgs3 = ["https://img.freepik.com/fotos-premium/smartphone-purpura-pantalla-blanco-pantalla-tactil-moderna-aislada-espacio-blanco_158502-95.jpg?size=626&ext=jpg", "https://img.freepik.com/fotos-premium/smartphone-purpura-pantalla-blanco-pantalla-tactil-moderna-aislada-espacio-blanco_158502-95.jpg?size=626&ext=jpg"];
+const prodImgs4 = ["https://img.freepik.com/fotos-premium/smartphone-purpura-pantalla-blanco-pantalla-tactil-moderna-aislada-espacio-blanco_158502-95.jpg?size=626&ext=jpg", "https://img.freepik.com/fotos-premium/smartphone-purpura-pantalla-blanco-pantalla-tactil-moderna-aislada-espacio-blanco_158502-95.jpg?size=626&ext=jpg"];
+const prodImgs5 = ["https://img.freepik.com/fotos-premium/smartphone-purpura-pantalla-blanco-pantalla-tactil-moderna-aislada-espacio-blanco_158502-95.jpg?size=626&ext=jpg", "https://img.freepik.com/fotos-premium/smartphone-purpura-pantalla-blanco-pantalla-tactil-moderna-aislada-espacio-blanco_158502-95.jpg?size=626&ext=jpg"];
+const prodImgs6 = ["https://img.freepik.com/fotos-premium/smartphone-purpura-pantalla-blanco-pantalla-tactil-moderna-aislada-espacio-blanco_158502-95.jpg?size=626&ext=jpg", "https://img.freepik.com/fotos-premium/smartphone-purpura-pantalla-blanco-pantalla-tactil-moderna-aislada-espacio-blanco_158502-95.jpg?size=626&ext=jpg"];
+const prodImgs7 = ["https://img.freepik.com/fotos-premium/smartphone-purpura-pantalla-blanco-pantalla-tactil-moderna-aislada-espacio-blanco_158502-95.jpg?size=626&ext=jpg", "https://img.freepik.com/fotos-premium/smartphone-purpura-pantalla-blanco-pantalla-tactil-moderna-aislada-espacio-blanco_158502-95.jpg?size=626&ext=jpg"];
+const prodImgs8 = ["https://img.freepik.com/fotos-premium/smartphone-purpura-pantalla-blanco-pantalla-tactil-moderna-aislada-espacio-blanco_158502-95.jpg?size=626&ext=jpg", "https://img.freepik.com/fotos-premium/smartphone-purpura-pantalla-blanco-pantalla-tactil-moderna-aislada-espacio-blanco_158502-95.jpg?size=626&ext=jpg"];
+const prodImgs9 = ["https://img.freepik.com/fotos-premium/smartphone-purpura-pantalla-blanco-pantalla-tactil-moderna-aislada-espacio-blanco_158502-95.jpg?size=626&ext=jpg", "https://img.freepik.com/fotos-premium/smartphone-purpura-pantalla-blanco-pantalla-tactil-moderna-aislada-espacio-blanco_158502-95.jpg?size=626&ext=jpg", "https://img.freepik.com/fotos-premium/smartphone-purpura-pantalla-blanco-pantalla-tactil-moderna-aislada-espacio-blanco_158502-95.jpg?size=626&ext=jpg"];
 
-// // modificar el valor de atributo privado
-// // prod4.setsupplier = "blank";
-// // impresion de consola del getter de prod4
-// // console.log(prod4.getsupplier);
-// // ejecutar el metodo setunits 1°.10 unidades 2°.5 unidades
-// // prod5.sellUnits(10);
-// // prod5.sellUnits(6);
+//Instancias
+const prod1 = new Product("./assets/iphone13.jpg", "iph-1", "iPhone 13", "CPU de 8 núcleos <br>con 4 núcleos de rendimiento y <br> 4 núcleos de eficiencia", 999, "50%", "Incluye impuesto País y percepción AFIP", 10, prodImgs1, ["Negro espacial", "Gris espacial"]);
+const prod2 = new Product("./assets/iphone13.jpg", "iphPr-2", "iPhone 13 Pro", "CPU de 8 núcleos con 4 núcleos de rendimiento y 4 núcleos de eficiencia", 1299, "20%", "Incluye impuesto País y percepción AFIP", 8, prodImgs2, ["Gris espacial", "Azul acero", "Negro espacial"]);
+const prod3 = new Product("./assets/iphone13.jpg", "iphMn-3", "iPhone 13 Mini", "CPU de 8 núcleos con 4 núcleos de rendimiento y 4 núcleos de eficiencia", 699, "10%", "Incluye impuesto País y percepción AFIP", 12, prodImgs3, ["Negro espacial", "Blanco"]);
+const prod4 = new Product("./assets/ipadAir.jpg", "ipdAir-4", "iPad Air", "CPU de 8 núcleos con 4 núcleos de rendimiento y 4 núcleos de eficiencia", 599, "25%", "Incluye impuesto País y percepción AFIP", 15, prodImgs4, ["Negro espacial", "Gris espacial"]);
+const prod5 = new Product("./assets/macbookPro.jpg", "mcbkAir-5", "MacBook Air", "CPU de 8 núcleos con 4 núcleos de rendimiento y 4 núcleos de eficiencia", 999, "10%", "Incluye impuesto País y percepción AFIP", 10, prodImgs5, ["Gris espacial", "Lila"]);
+const prod6 = new Product("./assets/macbookPro.jpg", "mcbkPr-6", "MacBook Pro", "CPU de 8 núcleos con 4 núcleos de rendimiento y 4 núcleos de eficiencia", 1299, "30%", "Incluye impuesto País y percepción AFIP", 8, prodImgs6, ["Negro espacial", "Gris espacial"]);
+const prod7 = new Product("./assets/appleWatch.jpg", "aplWtch-7", "Apple Watch Series 7", "CPU de 8 núcleos con 4 núcleos de rendimiento y 4 núcleos de eficiencia", 399, "00%", "Incluye impuesto País y percepción AFIP", 20, prodImgs7, ["Negro espacial", "Gris espacial"]);
+const prod8 = new Product("./assets/airPods.jpg", "arpdsPr-8", "AirPods Pro", "CPU de 8 núcleos con 4 núcleos de rendimiento y 4 núcleos de eficiencia", 249, "15%", "Incluye impuesto País y percepción AFIP", 25, prodImgs8,["Negro espacial", "Azul acero", "Lila", "Gris espacial"]);
+const prod9 = new Product("./assets/airPods.jpg", "arpds-9", "AirPods", "CPU de 8 núcleos con 4 núcleos de rendimiento y 4 núcleos de eficiencia", 200, "10%", "Incluye impuesto País y percepción AFIP", 30, prodImgs9, ["Negro espacial", "Gris espacial"]);
 
-// // impresion por consola
-// // console.log("Productos: ");
-// // console.log(prod1);
-// // console.log(prod2);
-// // console.log(prod3);
-// // console.log(prod4);
-// // console.log(prod5);
+//Array de los productos creados en instancias
+const productsArray = [prod1, prod2, prod3, prod4, prod5, prod6, prod7, prod8, prod9];
 
-// // console.log(`Nombre del producto 2: ${prod2.title}`);
-// // console.log(`Se encuentra en oferta el producto 3: ${prod3.onsale}`);
+//Array ofertas de la semana
+const ofertsArray = [prod1, prod4, prod6]
 
-const products = [prod1, prod2, prod3, prod4, prod5, prod6];
-// //la impresión en consola del array completo
-// console.log(products);
-// //la impresión del segundo elemento del array
-// console.log(products[1]);
-// //la impresión de la propiedad title del último elemento del array
-// console.log(products[products.length-1].title);
-
-// //definir nuevas variables-unshift para inicio
-// products.unshift(prod5);
-// //push para final
-// products.push(prod6);
-
-// console.log(products);
-// console.log(products[0]);
-// console.log(products[products.length-1]);
-
-// //quitar el primer elemento del array
-// products.shift();
-// //quitar el ultimo elemento del array
-// products.pop();
-
-// console.log(products);
-
-// // //define los arrays de imágenes de cada producto creado , esto fue cambiado arriba antes de las instancias para que pueda ser usado por las instancias
-// // const prod1Imgs = ["https://upload.wikimedia.org/wikipedia/commons/7/7c/Samsung_Galaxy_Note_7.png", "https://example.com/image2.jpg","https://example.com/image3.jpg"];
-// // const prod2Imgs = ["https://tiendasishop.com/media/catalog/product/m/h/mhdj3lz_a.jpg?optimize=high&bg-color=255,255,255&fit=bounds&height=700&width=700&canvas=700:700","https://example.com/image2.jpg", "https://example.com/image3.jpg"];
-// // const prod3Imgs = ["https://nextlevel.com.bo/cdn/shop/products/nstore_1500x.png?v=1685021675","https://example.com/image2.jpg"];
-// // const prod4Imgs = [ "https://i.postimg.cc/Jn2C5W84/galaxy1.webp", "https://example.com/image2.jpg"];
-
-// //agregar a cada instancia prodNumberImgs
-// console.log(products);
-// console.log(prod1.imgs);
-
-
-//PARA PRACTICAR.....

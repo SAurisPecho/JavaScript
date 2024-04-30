@@ -21,11 +21,11 @@ const optionsFotter = [
   { title: "Cómo comprar", linkTo: "./how.html", opts: ["Formas de pago","Envios","Devoluciones"] },
   { title: "Costos y tarifas", linkTo: "./taxs.html", opts: ["Impuestos", "Facturación"]},
   { title: "Mis pedidos", linkTo: "./orders.html", opts: ["Pedir nuevamente", "Lista de deseos"] },
-  { title: "Garantia", linkTo: "./warranty.html", opts: []},
+  { title: "Garantia", linkTo: "./warranty.html", opts: ["Garantia 7 dias"]},
 ];
 for (let optionFotter of optionsFotter) {
   const column = document.createElement("div");//un div para representar cada columna del pie de página
-  column.classList.add("footer-column");//para cañadir una clase a cada div que representa una columna del pie de página
+  column.classList.add("footer-column");//para añadir una clase a cada div que representa una columna del pie de página
 
   const title = document.createElement("h3");//para crear un título para la columna (h3)
   const titleLink = document.createElement("a");//para crear un enlace para el título que redirige a la página correspondiente
@@ -44,3 +44,12 @@ for (let optionFotter of optionsFotter) {
   column.appendChild(optList);// a cada columna se le agrega su lista 
   fotterSelector.appendChild(column);// a la session fotter se le agrega cada columna
 }
+
+
+// function openNav(){
+//   document.getElementById("nav").style.width = "100%";
+// }
+
+// function closeNav(){
+//   document.getElementById("nav").style.width = "0%";
+// }
