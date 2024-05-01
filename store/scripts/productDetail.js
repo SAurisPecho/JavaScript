@@ -10,9 +10,9 @@ function printDetails(id) {
   const detailsTemplate = `
     <div class="product-images-block">
             <div class="thumbnail-images">
-              ${product.imgs.map(each => `<img class="thumbnail-container" src="${each}" alt="mini" />`).join(" ") }
+              ${product.imgs.map(each => `<img class="thumbnail-container" src="${each}" alt="mini" onclick="changeMini(event)"/>`).join(" ") }
             </div>
-            <img class="main-image" src="${product.image}" alt="descrpcion-imagen${product.id}">
+            <img class="main-image" id="bigImg" src="${product.image}" alt="descrpcion-imagen${product.id}">
           </div>
           <div class="product-description-block">
             <h1 class="title">${product.title}</h1>
@@ -34,21 +34,21 @@ function printDetails(id) {
           <div class="product-checkout-block">
             <div class="checkout-container">
               <span class="checkout-total-label">Total:</span>
-              <h2 class="checkout-total-price">$${product.price}</h2>
+              <h2 class="checkout-total-price" id= "price" >$${product.price}</h2>
               <p class="checkout-description">${product.policytax}</p>
               <ul class="checkout-policy-list">
                 <li>
                   <span class="policy-icon"><img src="./assets/truck.png" alt="truck"></span>
-                  <span class="policy-desc">Agrega el producto al carrito para conocer los costos de envío.</span>
+                  <span class="policy-desc">${product.shippingcosts}</span>
                 </li>
                 <li>
                   <span class="policy-icon"><img src="./assets/plane.png" alt="plane"></span>
-                  <span class="policy-desc">Recibí aproximadamente entre 10 y 15 días hábiles, seleccionando envío normal.</span>
+                  <span class="policy-desc">${product.shippingtime}.</span>
                 </li>
               </ul>
               <div class="checkout-process">
                 <div class="top">
-                  <input type="number" value="1"/>
+                  <input type="number" value="1" min="1" onchange="changeSubtotal(event)"/>
                   <button class="btn-primary">Comprar</button>
                 </div>
                 <div class="bottom">
@@ -62,13 +62,30 @@ function printDetails(id) {
   const detailsSelector = document.querySelector("#columnsContainerDetails");
   detailsSelector.innerHTML = detailsTemplate;
 }
+
+
+
 printDetails(id);
 
+//PARA EL EVENTO DE CLICK DE LAS MINIATURAS
+function changeMini(click) {    //definir la funcion para que dependa del event en linea de las miniaturas
+    const selectedSrc = click.target.src;   //guardar la ruta de la imagen de la miniatura
+    const bigSelector = document.getElementById("bigImg");        //seleccionar el id de la imagen agrandada
+    bigSelector.src = selectedSrc;                // cambia la ruta src de la imagen grande por la ruta de la miniatura en la que se hizo clic.
+    document.querySelector(".thumbnail-container").addEventListener("click", changeMini);     //agrega un event listener al contenedor de miniaturas, Cuando se hace clic en cualquier miniatura dentro de este contenedor, la función changeMini se ejecutará.
+  }
 
+//PARA EL EVENTODE CAMBIO/CHANGE PARA EL SUBTOTAL
+function changeSubtotal(onchange) {   //definir la funcion con el evento onchange como parametro para que dependa segun su cambio
+  const quanty = onchange.target.value;   // en una variable guardar el valor de productos a comprar
+  const proDuct = productsArray.find(product => product.id == id);    //buscar el producto segun el id de la url con el metodo find
+  const subTotal = quanty * proDuct.price     //calcular el sub total
+  const priceSelector = document.querySelector("#price");       //seleccionar la etiqueta a donde se renderizara
+  priceSelector.innerHTML = `$${subTotal}`;     // imprimir en el HTML
+}
 
 
 //CARDS DE OFERTAS
-
 const $salesBlockCards = document.getElementById("salesBlockCards");
 
 //CARDS DE FORMA DINAMICA
