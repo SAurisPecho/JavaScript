@@ -19,9 +19,9 @@ function printDetails(id) {
             <form class="selector">
               <fieldset>
                 <label class="label" for="color">Color</label>
-                <select type="text" class="cuadro" placeholder="Selecciona un color">
+                <select id="color" type="text" class="cuadro" placeholder="Selecciona un color">
                   ${product.colors.map(
-                    (each) => `<option value = ${each}>${each}</option>`
+                    (each) => `<option value=${each}>${each}</option>`
                   ).join(" ")};
                 </select>
               </fieldset>
@@ -48,11 +48,11 @@ function printDetails(id) {
               </ul>
               <div class="checkout-process">
                 <div class="top">
-                  <input type="number" value="1" min="1" onchange="changeSubtotal(event)"/>
+                  <input type="number" id="quanty" value="1" min="1" onchange="changeSubtotal(event)"/>
                   <button class="btn-primary">Comprar</button>
                 </div>
                 <div class="bottom">
-                  <button class="btn-outline">Añadir al Carrito</button>
+                  <button class="btn-outline" onclick="saveProduct('${product.id}')" >Añadir al Carrito</button>
                 </div>
               </div>
             </div>
@@ -62,8 +62,6 @@ function printDetails(id) {
   const detailsSelector = document.querySelector("#columnsContainerDetails");
   detailsSelector.innerHTML = detailsTemplate;
 }
-
-
 
 printDetails(id);
 
@@ -76,14 +74,35 @@ function changeMini(click) {    //definir la funcion para que dependa del event 
   }
 
 //PARA EL EVENTODE CAMBIO/CHANGE PARA EL SUBTOTAL
-function changeSubtotal(onchange) {   //definir la funcion con el evento onchange como parametro para que dependa segun su cambio
-  const quanty = onchange.target.value;   // en una variable guardar el valor de productos a comprar
-  const proDuct = productsArray.find(product => product.id == id);    //buscar el producto segun el id de la url con el metodo find
-  const subTotal = quanty * proDuct.price     //calcular el sub total
+function changeSubtotal(event) {   //definir la funcion con el evento onchange como parametro para que dependa segun su cambio
+  const quantity = event.target.value;   // en una variable guardar el valor de productos a comprar
+  const proDuct = productsArray.find(product => product.id === id);    //buscar el producto segun el id de la url con el metodo find
+  const subTotal = quantity * proDuct.price     //calcular el sub total
   const priceSelector = document.querySelector("#price");       //seleccionar la etiqueta a donde se renderizara
   priceSelector.innerHTML = `$${subTotal}`;     // imprimir en el HTML
 }
 
+//PARA AGREGAR UN PRODUCTO AL CARRITO
+function saveProduct(id) {    //la función saveProduct depende del id del producto, importante en el evento onclick en linea hay que asignar como argumento product.id
+  const found = productsArray.find(each => each.id === id);     //definir una variable para que busque un producto con el mismo id del argumento 
+  const objectProduct = {                               //definir un objeto con las propiedades  especificas del producto
+    id: id,     
+    title: found.title,
+    price: found.price,
+    image: found.image,
+    colors: document.getElementById("color").value,
+    quantity: document.querySelector("input").value,
+  };
+
+  if (localStorage.getItem("cart")) {     // Verificar si la clave 'cart' existe en localStorage
+    let cart = JSON.parse(localStorage.getItem("cart"));      //Si existe obtener el contenido y conviertirlo a su formato original con JSON.parse()
+    cart.push(objectProduct);             // Agregamos el nuevo objectProduct al array cart
+    localStorage.setItem("cart", JSON.stringify(cart));       // Guardamos en localStorage el array cart actualizado modificando para que sea cadena con Json.stringify en localStorage
+  } else {
+    let cart = [objectProduct];     //// Si no existe, crear un nuevo array con el producto y guardarlo en el storage
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }
+}
 
 //CARDS DE OFERTAS
 const $salesBlockCards = document.getElementById("salesBlockCards");

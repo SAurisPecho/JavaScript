@@ -207,9 +207,10 @@ footer .columns-container {
     justify-content: space-between;
     flex-wrap: wrap;
     padding: 25px 20px;
+    gap:1em;
 }
 footer .container {
-    width: 1000px;
+    /* width: 1000px; */
     display: flex;
     flex-direction: column;
 }

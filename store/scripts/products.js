@@ -97,7 +97,7 @@ const prodImgs9 = [
 //Instancias
 const prod1 = new Product(
   "https://plazavea.vteximg.com.br/arquivos/ids/27190807-450-450/image-594539176f914be19980fdc4f69f0389.jpg",
-  "iph-1",
+  "01",
   "iPhone 13",
   "Pantalla:6.1 <br> Memoria interna:128GB <br> Tecnología:5G",
   999,
@@ -111,7 +111,7 @@ const prod1 = new Product(
 );
 const prod2 = new Product(
   "https://plazavea.vteximg.com.br/arquivos/ids/27190792-450-450/image-4df485e6332b4970ae243377e398fc36.jpg",
-  "iphPr-2",
+  "02",
   "iPhone 13 Pro",
   "Pantalla:6.1 <br> Memoria interna:128GB <br> Tecnología:5G",
   1299,
@@ -125,7 +125,7 @@ const prod2 = new Product(
 );
 const prod3 = new Product(
   "https://plazavea.vteximg.com.br/arquivos/ids/27190850-450-450/image-529964975e144f5283df999e867efaf5.jpg",
-  "iphMn-3",
+  "03",
   "iPhone 13 Mini",
   "Cámara frontal:12+12MPx <br> Características: 64GB 4GB 12+12MPx Blanco <br> Cámara posterior:12MPx",
   699,
@@ -139,7 +139,7 @@ const prod3 = new Product(
 );
 const prod4 = new Product(
   "https://plazavea.vteximg.com.br/arquivos/ids/26947122-450-450/image-32643abfc0d5411b8108985cf3113d2a.jpg",
-  "ipdAir-4",
+  "04",
   "iPad Air",
   "Alto	24.76 cm <br> Ancho	17.85 cm <br> Memoria interna:64GB",
   599,
@@ -153,7 +153,7 @@ const prod4 = new Product(
 );
 const prod5 = new Product(
   "https://plazavea.vteximg.com.br/arquivos/ids/19883900-450-450/imageUrl_2.jpg",
-  "mcbkAir-5",
+  "05",
   "MacBook Air",
   "Pantalla:13.4 <br> Memoria RAM:8GB <br> Capacidad del disco duro:256GB SSD",
   999,
@@ -167,7 +167,7 @@ const prod5 = new Product(
 );
 const prod6 = new Product(
   "https://plazavea.vteximg.com.br/arquivos/ids/24820722-450-450/image-3df77da2f3a74d9ca5d9bb8476bbe5e2.jpg",
-  "mcbkPr-6",
+  "06",
   "MacBook Pro",
   "Pantalla:13.4 <br> Memoria RAM:8GB <br> Capacidad del disco duro:520GB SSD",
   1299,
@@ -181,7 +181,7 @@ const prod6 = new Product(
 );
 const prod7 = new Product(
   "https://plazavea.vteximg.com.br/arquivos/ids/28813838-450-450/image-bbb9d6f797a0417f9c8ab1b3d2066d8e.jpg",
-  "aplWtch-7",
+  "07",
   "Apple Watch Series 7",
   "Alto	4.0 cm <br> Ancho 3.4 cm <br> Color: Medianoche",
   399,
@@ -195,7 +195,7 @@ const prod7 = new Product(
 );
 const prod8 = new Product(
   "https://plazavea.vteximg.com.br/arquivos/ids/28683714-450-450/image-db49e6c2d0fb4f48b67272d628d4e46b.jpg",
-  "arpdsPr-8",
+  "08",
   "AirPods Pro",
   "Color	Blanco <br> Compatibilidad	Apple <br> Garantía	1 año",
   249,
@@ -209,7 +209,7 @@ const prod8 = new Product(
 );
 const prod9 = new Product(
   "https://plazavea.vteximg.com.br/arquivos/ids/28663871-450-450/imageUrl_1.jpg",
-  "arpds-9",
+  "09",
   "AirPods",
   "Incluye:Cable de conector <br> Potencia:100 mW <br> Características:Diseño over-ear",
   500,
