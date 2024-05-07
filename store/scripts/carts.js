@@ -75,15 +75,6 @@ function printTotal() {
     <p class="cart-tax">Incluye impuesto País y percepción AFIP</p>
     <button class="cart-btn" id="buy" type="button">COMPRAR</button>
 `;
-  //Seleccionar al boton de comprar
-  const buySelector = document.getElementById("buy");
-
-  buySelector.addEventListener("click", () => {
-    //Borrar los productos del carrito
-    localStorage.removeItem("cart");
-    //Redirigir a la página de inicio
-    window.location.href = "./cart.html";
-  });
 }
 
 //funcion changeQuantity(event) para cambiar la cantidad de productos en el carrito
