@@ -110,3 +110,90 @@ const prod6 = new Product("012345apb6", "telefono", 1500, 12, "https://falabella
 
 
 //PARA PRACTICAR.....
+
+//CARRITO RENDERIZADO
+// let cartproducts = JSON.parse(localStorage.getItem("cart"));
+
+// function createCartCard(product) {
+//     return `
+//     <img class="product-imge" src="${product.image}">
+//     <div class="productdetailsyprice">
+//         <div class="product-details">
+//             <div class="title-product">${product.title}</div>
+//             <div class="color-product">${product.color}</div>
+//             <div class="description-product">${product.description}</div>
+//         </div>
+//         <div class="product-price">
+//             <div class="top">
+//                 <input class="product-input" type="number" name="quantity" min="1" id="${product.id}_${product.color}" value="${product.quantity}" onchange="changeQuantity(event)" >
+//                 <div class="price">P.U. $${product.price}</div>
+//             </div>
+//             <div class="bottom">
+//                 <div class="subtotal">Subtotal ${product.price * product.quantity}.00</div>
+//             </div>
+//         </div>
+//     </div>
+//     `
+// }
+// function printCartCards() {
+//     const $containerMain = document.querySelector(".containerMain");
+//     $containerMain.innerHTML="";
+//     if (cartproducts !== null || cartproducts.length >0){
+//       cartproducts.forEach((cartproduct) => { 
+//         const productArticle = document.createElement("article")
+//         productArticle.classList.add("product-cart")
+//         productArticle.setAttribute("id", "cartproducts")
+//         productArticle.innerHTML = createCartCard(cartproduct);
+//         $containerMain.appendChild(productArticle)
+//     });   
+//     } else {
+//         $containerMain.innerHTML =
+//         `<article class ="product-cart" id="cartproducts">
+//             <div class ="title-product">No hay productos en el carrito</div>
+//         </article>`
+//     }
+// }
+// printCartCards();
+
+// function createTotalTemplate() {
+//     let total = 0;
+//     const $total = document.querySelector("#total");
+//     cartproducts.forEach((cartproduct) => (total +=  cartproduct.price * cartproduct.quantity));
+//     $total.innerHTML=`
+//     <h1 class="cart-title">Resumen del pedido</h1>
+//     <p class="cart-total">Total           USD$${total}</p>
+//     <p class="cart-tax">Incluye impuesto País y percepción AFIP</p>
+//     <button class="cart-btn" id="buy" type="button">COMPRAR</button>
+//     `
+//     //Seleccionar al boton de comprar
+//   const buySelector = document.getElementById("buy");
+
+//   buySelector.addEventListener("click", () => {
+//     //Borrar los productos del carrito
+//     localStorage.removeItem("cart");
+//     //Redirigir a la página de inicio
+//     window.location.href = "./cart.html";
+//   });
+// }
+
+// createTotalTemplate();
+
+
+// function changeQuantity(event) {
+//     //Traer el id del producto
+//     const id = event.target.id.split("_");
+//     //Traer el valor de la cantidad
+//     const quantity = event.target.value;
+//     //Iterar sobre los productos del carrito
+//     cartproducts.forEach((product) => {
+//       //Verificar si el id del producto es igual al id del producto seleccionado
+//       if (product.id === id[0] && product.color == id[1]) {
+//         //Cambiar la cantidad del producto
+//         product.quantity = quantity;
+//       }
+//     });
+//      //Guardar el carrito en localStorage
+//         localStorage.setItem("cart", JSON.stringify(cartproducts));
+//         printCartCards();
+//         createTotalTemplate();
+// }

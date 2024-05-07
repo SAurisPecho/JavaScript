@@ -85,21 +85,23 @@ function changeSubtotal(event) {   //definir la funcion con el evento onchange c
 //PARA AGREGAR UN PRODUCTO AL CARRITO
 function saveProduct(id) {    //la función saveProduct depende del id del producto, importante en el evento onclick en linea hay que asignar como argumento product.id
   const found = productsArray.find(each => each.id === id);     //definir una variable para que busque un producto con el mismo id del argumento 
-  const objectProduct = {                               //definir un objeto con las propiedades  especificas del producto
+  const newObjectProduct = {                               //definir un objeto con las propiedades  especificas del producto
     id: id,     
     title: found.title,
     price: found.price,
     image: found.image,
-    colors: document.getElementById("color").value,
-    quantity: document.querySelector("input").value,
+    policytax: found.policytax,
+    description: found.description,
+    color: document.getElementById("color").value,
+    quantity: document.getElementById("quanty").value,
   };
 
   if (localStorage.getItem("cart")) {     // Verificar si la clave 'cart' existe en localStorage
     let cart = JSON.parse(localStorage.getItem("cart"));      //Si existe obtener el contenido y conviertirlo a su formato original con JSON.parse()
-    cart.push(objectProduct);             // Agregamos el nuevo objectProduct al array cart
+    cart.push(newObjectProduct);             // Agregamos el nuevo objectProduct al array cart
     localStorage.setItem("cart", JSON.stringify(cart));       // Guardamos en localStorage el array cart actualizado modificando para que sea cadena con Json.stringify en localStorage
   } else {
-    let cart = [objectProduct];     //// Si no existe, crear un nuevo array con el producto y guardarlo en el storage
+    let cart = [newObjectProduct];     //// Si no existe, crear un nuevo array con el producto y guardarlo en el storage
     localStorage.setItem("cart", JSON.stringify(cart));
   }
 }
