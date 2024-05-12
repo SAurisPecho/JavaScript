@@ -49,11 +49,32 @@ section {
 }
 .search .social ul {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     list-style-type: none;
 }
-  .search .social ul li {
-    padding: 0 10px;
+.socialred {
+    display: flex;
+}
+.search .social ul li img {
+    display: flex;
+    font-size: 22px;
+    margin-right: 1em;
+    cursor: pointer;
+}
+.search .social ul li i {
+    margin-right: 1em;
+    cursor: pointer;
+}
+.iconUsuarioOnline {
+    color: white;
+    font-size: 20.5px;
+}
+.fa-solid.fa-circle-user {
+    font-size: 26px;
+    color: white;
+}
+.hidden { 
+    display: none; 
 }
 #nav {
     max-width: 1200px;

@@ -51,9 +51,7 @@ header {
     justify-content: flex-end;
     list-style-type: none;
 }
-  .search .social ul li {
-    padding: 0 10px;
-}
+
 
 /*BLOQUE DE NAVEGACION*/
 #nav {
@@ -173,10 +171,26 @@ main .columns-container {
     padding: 20px 28px 28px 28px;
     border-radius: 8px;
 }
+.part1 {
+    display: flex;
+    justify-content: space-between;
+}
 .checkout-total-label {
     color: #ff3b3c;
     font-size: 22px;
     font-weight: 700;
+}
+.btn-favorite {
+    background: #ebebeb;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+}
+.btn-favorite .fa-regular {
+    font-size: x-large;
+}
+.btn-favorite .fa-solid {
+    font-size: x-large;
 }
 .checkout-total-price {
     font-size: 28px;
@@ -205,15 +219,16 @@ main .columns-container {
 .checkout-process .top {
     display: flex;
     margin-bottom: 10px;
+    gap: 5px;
 }
 .checkout-process .top input {
     height: 40px;
     border-radius: 10px;
     border: none;
     width: 62px;
-    margin-right: 10px;
     padding: 0 10px 0 20px;
     box-sizing: border-box;
+    margin-right: 10px;
 }
 .btn-primary {
     width: 100%;
@@ -224,6 +239,7 @@ main .columns-container {
     height: 40px;
     border-radius: 10px;
 }
+
 .btn-outline {
     width: 100%;
     border: 1px solid #ff3b3c;
@@ -232,6 +248,7 @@ main .columns-container {
     height: 40px;
     border-radius: 10px;
     background: white;
+    cursor: pointer;
 }
 
 /*PRODUCTOS RECOMENDADOS/SALES-BLOCK*/

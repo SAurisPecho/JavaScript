@@ -6,8 +6,10 @@
     <title>Tienda Virtual</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <script src="https://kit.fontawesome.com/bcea3e283b.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css..." />
     <link rel="stylesheet" href="./styles/details.css" />
+    <link rel="stylesheet" href="./styles/styles.css">
   </head>
   <body>
     <header>
@@ -28,9 +30,14 @@
         </div>
           <div class="social">
             <ul>
-              <li><a href=""><img src="assets/facebook.png" alt="facebook"></a></li>
-              <li><a href=""><img src="assets/instagram.png" alt="instagram"></a></li>
-              <li><a href="./cart.html"><img src="assets/cart-28-24.png" alt="carrito-de-compra"></a></li> 
+              <div class="socialred">
+                <li><a href="#" class="iconFacebook"><img src="assets/facebook.png" alt="facebook"></a></li>
+                <li><a href="#" class="iconInstagram"><img src="assets/instagram.png" alt="instagram"></a></li>
+              </div>
+              <li><a href="#" class="iconUsuarioOnline"><i class="fa-solid fa-user-check"></i></a></li>
+              <li><a href="#" class="iconUsuarioOffline"><i class="fa-solid fa-circle-user"></i></a></li>
+              <li><a href="./cart.html" class="iconCart hidden"><img src="assets/cart-28-24.png" alt="carrito-de-compra"></a></li> 
+              <li><a href="./favorite.html" class="iconFav hidden"><img src="assets/favorite-5-24.ico" alt="favoritos"></a></li> 
             </ul>
           </div>
         </div>
@@ -60,7 +67,10 @@
       </div>
     </footer>
     <script src="./scripts/layout.js"></script>
+      <script src="./scripts/productCards.js"></script>
     <script src="./scripts/products.js"></script>
     <script src="./scripts/productDetail.js"></script>
+    <!-- <script src="./scripts/favorite.js"></script> -->
+    <script src="./scripts/online.js"></script>
   </body>
 </html>

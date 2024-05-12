@@ -2,15 +2,13 @@ const query = location.search; //para capturar la cadena de consulta
 const params = new URLSearchParams(query); //Creamos una nueva URLSearchParams con la cadena de consulta
 const id = params.get("id"); //usamos get para obtener el valor de id
 
-console.log(id);
-
 function printDetails(id) {
   //la funcion va a tener como parametro el id de la url actual
   const product = productsArray.find((product) => product.id === id); //en la variable guardamos el array y buscamos por cada elemento el id el que debe coincidar con el parametro
   const detailsTemplate = `
     <div class="product-images-block">
             <div class="thumbnail-images">
-              ${product.imgs.map(each => `<img class="thumbnail-container" src="${each}" alt="mini" onclick="changeMini(event)"/>`).join(" ") }
+              ${product.imgs.map(each => `<img class="thumbnail-container" src="${each}" alt="mini" onclick="changeMini(event)"/>`).join(" ") } 
             </div>
             <img class="main-image" id="bigImg" src="${product.image}" alt="descrpcion-imagen${product.id}">
           </div>
@@ -20,9 +18,7 @@ function printDetails(id) {
               <fieldset>
                 <label class="label" for="color">Color</label>
                 <select id="color" type="text" class="cuadro" placeholder="Selecciona un color">
-                  ${product.colors.map(
-                    (each) => `<option value=${each}>${each}</option>`
-                  ).join(" ")};
+                  ${product.colors.map((each) => `<option value=${each}>${each}</option>`).join(" ")};
                 </select>
               </fieldset>
             </form>
@@ -33,7 +29,10 @@ function printDetails(id) {
           </div>
           <div class="product-checkout-block">
             <div class="checkout-container">
-              <span class="checkout-total-label">Total:</span>
+              <div class="part1">
+                <span class="checkout-total-label">Total:</span>
+                <button class="btn-favorite" id="favoriteButton" onclick="toggleFavorite('${product.id}')"><i class="fa-regular fa-heart" id="heartIcon"></i></button>
+              </div>
               <h2 class="checkout-total-price" id= "price" >$${product.price}</h2>
               <p class="checkout-description">${product.policytax}</p>
               <ul class="checkout-policy-list">
@@ -84,6 +83,7 @@ function changeSubtotal(event) {   //definir la funcion con el evento onchange c
 
 //PARA AGREGAR UN PRODUCTO AL CARRITO
 function saveProduct(id) {    //la función saveProduct depende del id del producto, importante en el evento onclick en linea hay que asignar como argumento product.id
+  let containerCart = "";     // creamos una variable vacia
   const found = productsArray.find(each => each.id === id);     //definir una variable para que busque un producto con el mismo id del argumento 
   const newObjectProduct = {                               //definir un objeto con las propiedades  especificas del producto
     id: id,     
@@ -95,21 +95,72 @@ function saveProduct(id) {    //la función saveProduct depende del id del produ
     color: document.getElementById("color").value,
     quantity: document.getElementById("quanty").value,
   };
-
-  if (localStorage.getItem("cart")) {     // Verificar si la clave 'cart' existe en localStorage
-    let cart = JSON.parse(localStorage.getItem("cart"));      //Si existe obtener el contenido y conviertirlo a su formato original con JSON.parse()
-    cart.push(newObjectProduct);             // Agregamos el nuevo objectProduct al array cart
-    localStorage.setItem("cart", JSON.stringify(cart));       // Guardamos en localStorage el array cart actualizado modificando para que sea cadena con Json.stringify en localStorage
-  } else {
-    let cart = [newObjectProduct];     //// Si no existe, crear un nuevo array con el producto y guardarlo en el storage
-    localStorage.setItem("cart", JSON.stringify(cart));
+    let cart = JSON.parse(localStorage.getItem("cart"));      //obtener la clave cart de el LS y a el contenido conviertirlo a su formato original con JSON.parse()
+  if (!cart) {     // Verificar si la clave 'cart' es nula o vacia
+    containerCart = [newObjectProduct]  // si cart esta vacia a containerCart qle asignamos el nuevo producto
+  } else {      // si el carrito no esta vacio
+    let indxProduct = cart.findIndex((cartProduct) => cartProduct.id === id) //Buscar si el index del producto ha agregar está en carrito
+      if (indxProduct > -1) {   // si esta en el carrito 
+        cart[indxProduct].quantity = Number(cart[indxProduct].quantity) + Number (newObjectProduct.quantity); // accdemos a la pocision del producto en cart con [indxProduct] y a su cantidad , adems sumamos la cantidad del nuevo objeto a agregar
+      } else {  //si no esta en carrito
+     cart.push(newObjectProduct);     // lo guardamos en la variable cart que tiene el localStorage en sus valor original
+      }
+    containerCart = cart;   //asignamos el valor de la variable cart a la variable containerCart
   }
+  localStorage.setItem("cart", JSON.stringify(containerCart));  //Guardamos en localStorage 
 }
 
-//CARDS DE OFERTAS
-const $salesBlockCards = document.getElementById("salesBlockCards");
+function toggleFavorite(id) {
+  const icon = document.querySelector("#heartIcon");
+  // obtener la lista de favoritos del almacenamiento local
+  let fav = JSON.parse(localStorage.getItem("fav")) || [];
+  if (fav.length >= 4) {        //si fav ya tiene mas de 4 productos muestra la alerta y con return detiene la funcion toggleFavorite 
+    alert("¡Ya tienes 4 productos favoritos! No puedes agregar más.");
+    return;
+}
+  const index = fav.findIndex((favProduct) => favProduct.id === id);  // verificar si el producto está en la lista de favoritos con findIndex
+  if (index !== -1) {       // Si el producto esta en la lista de favoritos, lo eliminamos
+    fav.splice(index, 1);
+    if (index !== -1) {
+      icon.classList.replace("fa-solid", "fa-regular")
+    }
+  } else { 
+    const addfav = productsArray.find((each) => each.id === id);
+    const newFavProduct = {
+        id: id,
+        title: addfav.title,
+        price: addfav.price,
+        image: addfav.image,
+        policytax: addfav.policytax,
+        description: addfav.description,
+    };
+    fav.push(newFavProduct);    // Si el producto no está en la lista de favoritos, lo agregamos
+      if(index === -1) {
+      icon.classList.replace("fa-regular", "fa-solid");
+      }
+    }
+    localStorage.setItem("fav", JSON.stringify(fav));  
+}
+
+window.addEventListener("DOMContentLoaded", function() {
+  const fav = JSON.parse(localStorage.getItem("fav")) || [];
+  const icon = document.querySelector("#heartIcon");
+  const productId = params.get("id"); // Obtener el ID del producto de la URL
+
+  if (fav.some((favProduct) => favProduct.id === productId)) {  // verificar si hay un elemento en fav que tenga el mismo d del productoactual
+    icon.classList.remove("fa-regular");
+    icon.classList.add("fa-solid");
+  } else {
+    icon.classList.remove("fa-solid");
+    icon.classList.add("fa-regular");
+  }
+});
+
 
 //CARDS DE FORMA DINAMICA
+
+const $salesBlockCards = document.querySelector(".salesBlockCards")
+
 function cardOferts (ofertArray) {
     return `
     <h2>Ofertas de la semana</h2>
@@ -143,7 +194,4 @@ let loadOferts = (ofertsArray) => { // guardamos en una variable una función qu
          if ($salesBlockCards){                                  //si el elemento $salesBlockCards = id salesBlockCards esta definida 
           loadOferts(ofertsArray);                     //se llama a la función loadProducts que tiene como argumento ofertsArray donde estan todos los productos en oferta
          }
-     })
- 
-
-
+     });
